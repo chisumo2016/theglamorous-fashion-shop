@@ -17,5 +17,9 @@ Route::get('/', function () {
 
 //Route::view('/admin', 'admin.dashboard.index');
 //Route::view('/admin/login', 'admin.auth.login');
-
+//Route::group(['prefix' => 'admin'], function () {
+//    Route::get('/', function () {
+//        return 'admin home';
+//    });
+//});
 require 'admin.php';
