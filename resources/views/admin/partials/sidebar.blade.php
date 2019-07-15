@@ -14,9 +14,10 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i>
-                <span class="app-menu__label">Settings</span>
-            </a>
+{{--            <a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i>--}}
+{{--                <span class="app-menu__label">Settings</span>--}}
+{{--            </a>--}}
+            <a class="dropdown-item" href="{{ route('admin.settings') }}"><i class="fa fa-cog fa-lg"></i> Settings</a>
         </li>
     </ul>
 </aside>
