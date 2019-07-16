@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
-        CategoryContract::class         =>          CategoryRepository::class,
+        CategoryContract::class   =>   CategoryRepository::class,
     ];
 
     /**
@@ -25,13 +25,14 @@ class RepositoryServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
+//    /**
+//     * Bootstrap services.
+//     *
+//     * @return void
+//     */
+//    public function boot()
+//    {
+//        //
+//    }
+
 }
