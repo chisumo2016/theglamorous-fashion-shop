@@ -29,5 +29,5 @@ class Attribute extends Model
         'is_required'   =>  'boolean',
     ];
 
-    
+
 }
