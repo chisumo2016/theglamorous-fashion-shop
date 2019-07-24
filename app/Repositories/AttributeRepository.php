@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Contracts\AttributeContract;
+use App\Models\Attribute;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;

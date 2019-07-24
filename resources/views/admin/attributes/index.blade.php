@@ -1,4 +1,4 @@
-@extends('admin.app')
+@extends('admin.master')
 @section('title') {{ $pageTitle }} @endsection
 @section('content')
     <div class="app-title">
