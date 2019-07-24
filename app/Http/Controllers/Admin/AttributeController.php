@@ -15,4 +15,11 @@ class AttributeController extends  BaseController
     {
         $this->attributeRepository = $attributeRepository;
     }
+    public function index()
+    {
+        $attributes = $this->attributeRepository->listAttributes();
+
+        $this->setPageTitle('Attributes', 'List of all attributes');
+        return view('admin.attributes.index', compact('attributes'));
+    }
 }
