@@ -29,5 +29,11 @@ class Attribute extends Model
         'is_required'   =>  'boolean',
     ];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function values()
+    {
+        return $this->hasMany(AttributeValue::class);
+    }
 }
