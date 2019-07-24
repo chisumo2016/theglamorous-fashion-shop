@@ -54,4 +54,22 @@ class AttributeController extends  BaseController
         $this->setPageTitle('Attributes', 'Edit Attribute : '.$attribute->name);
         return view('admin.attributes.edit', compact('attribute'));
     }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'code'          =>  'required',
+            'name'          =>  'required',
+            'frontend_type' =>  'required'
+        ]);
+
+        $params = $request->except('_token');
+
+        $attribute = $this->attributeRepository->updateAttribute($params);
+
+        if (!$attribute) {
+            return $this->responseRedirectBack('Error occurred while updating attribute.', 'error', true, true);
+        }
+        return $this->responseRedirectBack('Attribute updated successfully' ,'success',false, false);
+    }
 }
