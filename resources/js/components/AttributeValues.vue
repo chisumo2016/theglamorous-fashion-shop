@@ -1,6 +1,51 @@
 <template>
     <div id="">
         <div class="tile">
+            <h3 class="tile-title">Attribute Values</h3>
+            <hr>
+            <div class="tile-body">
+                <div class="form-group">
+                    <label class="control-label" for="value">Value</label>
+                    <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Enter attribute value"
+                            id="value"
+                            name="value"
+                            v-model="value"
+                    />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="price">Price</label>
+                    <input
+                            class="form-control"
+                            type="number"
+                            placeholder="Enter attribute value price"
+                            id="price"
+                            name="price"
+                            v-model="price"
+                    />
+                </div>
+            </div>
+            <div class="tile-footer">
+                <div class="row d-print-none mt-2">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-success" type="submit" @click.stop="saveValue()" v-if="addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Save
+                        </button>
+                        <button class="btn btn-success" type="submit" @click.stop="updateValue()" v-if="!addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Update
+                        </button>
+                        <button class="btn btn-primary" type="submit" @click.stop="reset()" v-if="!addValue">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--   =======================END======================     -->
+        <div class="tile">
             <h3 class="tile-title">Option Values</h3>
             <div class="tile-body">
                 <div class="table-responsive">
@@ -67,6 +112,31 @@
                     console.log(error);
                 });
             },
-        }
+
+            saveValue() {
+                if (this.value === '') {
+                    this.$swal("Error, Value for attribute is required.", {
+                        icon: "error",
+                    });
+                } else {
+                    let attributeId = this.attributeid;
+                    let _this = this;
+                    axios.post('/admin/attributes/add-values', {
+                        id: attributeId,
+                        value: _this.value,
+                        price: _this.price,
+                    }).then (function(response){
+                        _this.values.push(response.data);
+                        _this.resetValue();
+                        _this.$swal("Success! Value added successfully!", {
+                            icon: "success",
+                        });
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            },
+        },
+
     }
 </script>
