@@ -168,6 +168,39 @@
                     });
                 }
             },
+
+            deleteAttributeValue(value) {
+                this.$swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this attribute value!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        this.currentId = value.id;
+                        this.key = this.values.indexOf(value);
+                        let _this = this;
+                        axios.post('/admin/attributes/delete-values', {
+                            id: _this.currentId
+                        }).then (function(response){
+                            if (response.data.status === 'success') {
+                                _this.values.splice(_this.key, 1);
+                                _this.resetValue();
+                                _this.$swal("Success! Option value has been deleted!", {
+                                    icon: "success",
+                                });
+                            } else {
+                                _this.$swal("Your option value not deleted!");
+                            }
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    } else {
+                        this.$swal("Your option value not deleted!");
+                    }
+                });
+            },
             resetValue() {
                 this.value = '';
                 this.price = '';
