@@ -136,6 +136,13 @@
                     });
                 }
             },
+            editAttributeValue(value) {
+                this.addValue = false;
+                this.value = value.value;
+                this.price = value.price;
+                this.currentId = value.id;
+                this.key = this.values.indexOf(value);
+            },
             resetValue() {
                 this.value = '';
                 this.price = '';
