@@ -1,5 +1,38 @@
 <template>
-    <h3>Option Values</h3>
+    <div id="">
+        <div class="tile">
+            <h3 class="tile-title">Option Values</h3>
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                        <tr class="text-center">
+                            <th>#</th>
+                            <th>Value</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="value in values">
+                            <td style="width: 25%" class="text-center">{{ value.id}}</td>
+                            <td style="width: 25%" class="text-center">{{ value.value}}</td>
+                            <td style="width: 25%" class="text-center">{{ value.price}}</td>
+                            <td style="width: 25%" class="text-center">
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -7,6 +40,7 @@
         name: "attribute-values",
         props: ['attributeid'],
 
+        //Data Properties
         data(){
             return {
                 values: [],
@@ -17,7 +51,7 @@
                 key: 0,
             }
         },
-
+      //Events of VueJs Application
         created: function() {
             this.loadValues();
         },
