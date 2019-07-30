@@ -136,6 +136,14 @@
                     });
                 }
             },
+            resetValue() {
+                this.value = '';
+                this.price = '';
+            },
+            reset() {
+                this.addValue = true;
+                this.resetValue();
+            }
         },
 
     }
