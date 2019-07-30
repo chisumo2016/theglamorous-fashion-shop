@@ -7,6 +7,7 @@
             <p class="app-sidebar__user-designation">Frontend Developer</p>
         </div>
     </div>
+
     <ul class="app-menu">
         <li>
             <a class="app-menu__item active" href="#"><i class="app-menu__icon fa fa-dashboard"></i>
