@@ -67,4 +67,16 @@ class BrandController extends BaseController
         }
         return $this->responseRedirect('admin.brands.index', 'Brand added successfully' ,'success',false, false);
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $brand = $this->brandRepository->findBrandById($id);
+
+        $this->setPageTitle('Brands', 'Edit Brand : '.$brand->name);
+        return view('admin.brands.edit', compact('brand'));
+    }
 }
