@@ -16,9 +16,9 @@ use App\Repositories\BrandRepository;
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $repositories = [
-        CategoryContract::class          =>   CategoryRepository::class,
+        CategoryContract::class          =>    CategoryRepository::class,
         AttributeContract::class         =>    AttributeRepository::class,
-        BrandContract::class            =>          BrandRepository::class,
+        BrandContract::class            =>      BrandRepository::class,
     ];
 
     /**

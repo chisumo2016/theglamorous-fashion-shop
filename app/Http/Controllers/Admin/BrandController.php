@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\BaseController;
 use App\Contracts\BrandContract;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
 
 class BrandController extends BaseController
 {
@@ -20,7 +20,7 @@ class BrandController extends BaseController
      * @param BrandContract $brandRepository
      */
 
-    public  function  __construct($brandRepository)
+    public  function  __construct(BrandContract  $brandRepository)
     {
         $this->brandRepository = $brandRepository;
     }
