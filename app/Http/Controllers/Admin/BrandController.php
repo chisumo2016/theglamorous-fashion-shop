@@ -34,4 +34,14 @@ class BrandController extends BaseController
         $this->setPageTitle('Brands', 'List of all brands');
         return view('admin.brands.index', compact('brands'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public  function  create()
+    {
+        $this->setPageTitle('Brands', 'Create Brand');
+        return view('admin.brands.create');
+    }
 }
