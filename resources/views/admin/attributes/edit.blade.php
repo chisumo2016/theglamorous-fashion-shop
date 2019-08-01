@@ -14,11 +14,6 @@
                     <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">General</a></li>
                     <li class="nav-item"><a class="nav-link" href="#values" data-toggle="tab">Attribute Values</a></li>
                 </ul>
-
-{{--                <ul class="nav flex-column nav-tabs user-tabs">--}}
-{{--                    <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">General</a></li>--}}
-{{--                    <li class="nav-item"><a class="nav-link" href="#values" data-toggle="tab">Attribute Values</a></li>--}}
-{{--                </ul>--}}
             </div>
         </div>
         <div class="col-md-9">
@@ -100,16 +95,13 @@
                         </form>
                     </div>
                 </div>
-
                 <div class="tab-pane" id="values">
                     <attribute-values :attributeid="{{ $attribute->id }}"></attribute-values>
-{{--                    <h3>Option Values</h3>--}}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
 @push('scripts')
     <script src="{{ asset('backend/js/app.js') }}"></script>
 @endpush

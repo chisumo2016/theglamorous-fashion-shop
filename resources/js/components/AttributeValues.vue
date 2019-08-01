@@ -43,8 +43,6 @@
                 </div>
             </div>
         </div>
-
-        <!--   =======================END======================     -->
         <div class="tile">
             <h3 class="tile-title">Option Values</h3>
             <div class="tile-body">
@@ -64,10 +62,10 @@
                             <td style="width: 25%" class="text-center">{{ value.value}}</td>
                             <td style="width: 25%" class="text-center">{{ value.price}}</td>
                             <td style="width: 25%" class="text-center">
-                                <button class="btn btn-sm btn-primary"  @click.stop="editAttributeValue(value)">
+                                <button class="btn btn-sm btn-primary" @click.stop="editAttributeValue(value)">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger">
+                                <button class="btn btn-sm btn-danger" @click.stop="deleteAttributeValue(value)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
@@ -84,9 +82,7 @@
     export default {
         name: "attribute-values",
         props: ['attributeid'],
-
-        //Data Properties
-        data(){
+        data() {
             return {
                 values: [],
                 value: '',
@@ -96,10 +92,10 @@
                 key: 0,
             }
         },
-      //Events of VueJs Application
         created: function() {
             this.loadValues();
         },
+
         methods: {
             loadValues() {
                 let attributeId = this.attributeid;
@@ -112,7 +108,6 @@
                     console.log(error);
                 });
             },
-
             saveValue() {
                 if (this.value === '') {
                     this.$swal("Error, Value for attribute is required.", {
@@ -168,7 +163,6 @@
                     });
                 }
             },
-
             deleteAttributeValue(value) {
                 this.$swal({
                     title: "Are you sure?",
@@ -187,11 +181,11 @@
                             if (response.data.status === 'success') {
                                 _this.values.splice(_this.key, 1);
                                 _this.resetValue();
-                                _this.$swal("Success! Option value has been deleted!", {
+                                _this.$swal("Success! Attribute value has been deleted!", {
                                     icon: "success",
                                 });
                             } else {
-                                _this.$swal("Your option value not deleted!");
+                                _this.$swal("Your attribute value not deleted!");
                             }
                         }).catch(function (error) {
                             console.log(error);
@@ -209,7 +203,6 @@
                 this.addValue = true;
                 this.resetValue();
             }
-        },
-
+        }
     }
 </script>
