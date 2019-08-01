@@ -15,11 +15,12 @@ class CreateAttributeValuesTable extends Migration
     {
         Schema::create('attribute_values', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('attribute_id');
-            $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->unsignedBigInteger('attribute_id');
             $table->text('value');
             $table->decimal('price', 2)->nullable();
             $table->timestamps();
+
+            $table->foreign('attribute_id')->references('id')->on('attributes');
         });
     }
 
