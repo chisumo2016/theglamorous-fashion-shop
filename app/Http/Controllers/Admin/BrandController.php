@@ -9,5 +9,20 @@ use App\Http\Controllers\Controller;
 
 class BrandController extends BaseController
 {
-    //
+    /**
+     * @var BrandContract
+     */
+
+    protected  $brandRepository;
+
+    /**
+     * CategoryController constructor.
+     * @param BrandContract $brandRepository
+     */
+
+    public  function  __construct($brandRepository)
+    {
+        $this->brandRepository = $brandRepository;
+    }
+    
 }
