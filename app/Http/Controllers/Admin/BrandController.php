@@ -24,5 +24,14 @@ class BrandController extends BaseController
     {
         $this->brandRepository = $brandRepository;
     }
-    
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public  function  index()
+    {
+        $brands = $this->brandRepository->listBrands();
+
+        $this->setPageTitle('Brands', 'List of all brands');
+        return view('admin.brands.index', compact('brands'));
+    }
 }
