@@ -36,4 +36,12 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }
