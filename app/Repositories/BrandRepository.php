@@ -36,7 +36,7 @@ class BrandRepository extends  BaseRepository  implements  BrandContract
      * @return mixed
      */
 
-    public  function  listBrands(string  $order = '1' , string $sort = 'desc', array $columns = ['*'])
+    public  function  listBrands(string  $order = 'id' , string $sort = 'desc', array $columns = ['*'])
     {
         return $this->all($columns, $order, $sort);
     }
@@ -68,10 +68,12 @@ class BrandRepository extends  BaseRepository  implements  BrandContract
         try {
             $collection = collect($params);
 
+            //dd($collection);
+
             $logo = null;
 
             if ($collection->has('logo') && ($params['logo'] instanceof  UploadedFile)) {
-                $logo = $this->uploadOne($params['logo'], 'brands');
+               $logo = $this->uploadOne($params['logo'], 'brands');
             }
 
             $merge = $collection->merge(compact('logo'));
@@ -102,7 +104,6 @@ class BrandRepository extends  BaseRepository  implements  BrandContract
             if ($brand->logo != null) {
                 $this->deleteOne($brand->logo);
             }
-
             $logo = $this->uploadOne($params['logo'], 'brands');
         }
 
