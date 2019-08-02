@@ -79,4 +79,27 @@ class BrandController extends BaseController
         $this->setPageTitle('Brands', 'Edit Brand : '.$brand->name);
         return view('admin.brands.edit', compact('brand'));
     }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'name'      =>  'required|max:191',
+            'image'     =>  'mimes:jpg,jpeg,png|max:1000'
+        ]);
+
+        $params = $request->except('_token');
+
+        $brand = $this->brandRepository->updateBrand($params);
+
+        if (!$brand) {
+            return $this->responseRedirectBack('Error occurred while updating brand.', 'error', true, true);
+        }
+        return $this->responseRedirectBack('Brand updated successfully' ,'success',false, false);
+    }
 }
