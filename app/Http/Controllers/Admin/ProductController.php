@@ -40,4 +40,27 @@ class ProductController extends BaseController
         return view('admin.products.create', compact('categories', 'brands'));
     }
 
+    public function store(StoreProductFormRequest $request)
+    {
+        $params = $request->except('_token');
+
+        $product = $this->productRepository->createProduct($params);
+
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while creating product.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
