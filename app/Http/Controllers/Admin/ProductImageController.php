@@ -18,4 +18,22 @@ class ProductImageController extends Controller
     {
         $this->productRepository = $productRepository;
     }
+
+    public function upload(Request $request)
+    {
+        $product = $this->productRepository->findProductById($request->product_id);
+
+        if ($request->has('image')) {
+
+            $image = $this->uploadOne($request->image, 'products');
+
+            $productImage = new ProductImage([
+                'full'      =>  $image,
+            ]);
+
+            $product->images()->save($productImage);
+        }
+
+        return response()->json(['status' => 'Success']);
+    }
 }
