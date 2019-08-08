@@ -1,10 +1,10 @@
 @extends('admin.master')
 @section('title') {{ $pageTitle }} @endsection
 @section('content')
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css') }}"/>
 @endsection
-
 
     <div class="app-title">
         <div>
@@ -291,7 +291,7 @@
                     placement: {
                         from: "top",
                         align: "right"
-                    },
+                    }
                 });
             }
         });
