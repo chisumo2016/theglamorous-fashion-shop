@@ -30,4 +30,13 @@ class ProductController extends BaseController
         return view('admin.products.index', compact('products'));
     }
 
+    public function create()
+    {
+        $brands = $this->brandRepository->listBrands('name', 'asc');
+        $categories = $this->categoryRepository->listCategories('name', 'asc');
+
+        $this->setPageTitle('Products', 'Create Product');
+        return view('admin.products.create', compact('categories', 'brands'));
+    }
+
 }
