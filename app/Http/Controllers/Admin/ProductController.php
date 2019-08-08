@@ -30,6 +30,4 @@ class ProductController extends BaseController
         return view('admin.products.index', compact('products'));
     }
 
-
-
 }
