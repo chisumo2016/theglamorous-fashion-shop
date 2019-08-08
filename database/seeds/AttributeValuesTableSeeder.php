@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AttributeValue;
 use Illuminate\Database\Seeder;
 
 class AttributeValuesTableSeeder extends Seeder
