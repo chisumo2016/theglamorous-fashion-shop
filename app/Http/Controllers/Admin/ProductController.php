@@ -62,6 +62,18 @@ class ProductController extends BaseController
         return view('admin.products.edit', compact('categories', 'brands', 'product'));
     }
 
+    public function update(StoreProductFormRequest $request)
+    {
+        $params = $request->except('_token');
+
+        $product = $this->productRepository->updateProduct($params);
+
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
+    }
+
 }
 
 
