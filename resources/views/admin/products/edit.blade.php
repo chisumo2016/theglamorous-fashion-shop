@@ -1,6 +1,11 @@
 @extends('admin.master')
 @section('title') {{ $pageTitle }} @endsection
-=@section('content')
+@section('content')
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.css') }}"/>
+@endsection
+
+
     <div class="app-title">
         <div>
             <h1><i class="fa fa-shopping-bag"></i> {{ $pageTitle }} - {{ $subTitle }}</h1>
@@ -12,11 +17,54 @@
             <div class="tile p-0">
                 <ul class="nav flex-column nav-tabs user-tabs">
                     <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">General</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#images" data-toggle="tab">Images</a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-9">
             <div class="tab-content">
+
+                <div class="tab-pane" id="images">
+                    <div class="tile">
+                        <h3 class="tile-title">Upload Image</h3>
+                        <hr>
+                        <div class="tile-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="" class="dropzone" id="dropzone" style="border: 2px dashed rgba(0,0,0,0.3)">
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row d-print-none mt-2">
+                                <div class="col-12 text-right">
+                                    <button class="btn btn-success" type="button" id="uploadButton">
+                                        <i class="fa fa-fw fa-lg fa-upload"></i>Upload Images
+                                    </button>
+                                </div>
+                            </div>
+                            @if ($product->images)
+                                <hr>
+                                <div class="row">
+                                    @foreach($product->images as $image)
+                                        <div class="col-md-3">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <img src="{{ asset('storage/'.$image->full) }}" id="brandLogo" class="img-fluid" alt="img">
+                                                    <a class="card-link float-right text-danger" href="{{ route('admin.products.images.delete', $image->id) }}">
+                                                        <i class="fa fa-fw fa-lg fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
                 <div class="tab-pane active" id="general">
                     <div class="tile">
                         <form action="{{ route('admin.products.update') }}" method="POST" role="form">
@@ -194,8 +242,11 @@
         </div>
     </div>
 @endsection
+
 @push('scripts')
     <script type="text/javascript" src="{{ asset('backend/js/plugins/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('backend/js/plugins/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('backend/js/plugins/bootstrap-notify.min.js') }}"></script>
     <script>
         $( document ).ready(function() {
             $('#categories').select2();
