@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropAttributeValueProductAttributeTable extends Migration
+class AlterProductAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class DropAttributeValueProductAttributeTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('attribute_value_product_attribute');
+        Schema::table('product_attributes', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('attribute_id')->after('id');
+            $table->foreign('attribute_id')->references('id')->on('attributes');
+
+            $table->string('value')->after('attribute_id');
+        });
     }
 
     /**
