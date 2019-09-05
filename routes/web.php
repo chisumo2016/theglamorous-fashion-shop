@@ -11,12 +11,17 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+
 
 Route::view('/', 'site.pages.homepage');
 
+require 'admin.php';
+Auth::routes();
+
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 //Route::view('/admin', 'admin.dashboard.index');
 //Route::view('/admin/login', 'admin.auth.login');
 //Route::group(['prefix' => 'admin'], function () {
@@ -24,5 +29,3 @@ Route::view('/', 'site.pages.homepage');
 //        return 'admin home';
 //    });
 //});
-require 'admin.php';
-Auth::routes();
