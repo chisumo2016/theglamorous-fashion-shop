@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Contracts\ProductContract;
 use Illuminate\Http\Request;
+use App\Contracts\ProductContract;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
@@ -19,6 +19,6 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->findProductBySlug($slug);
 
-        dd($product);
+         dd($product);
     }
 }

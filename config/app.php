@@ -177,6 +177,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
 
+
     ],
 
     /*

@@ -14,11 +14,11 @@ class CategoryController extends Controller
             $this->categoryRepository = $categoryRepository;
         }
 
-        public  function show($slug)
-        {
-            $category = $this->categoryRepository->findBySlug($slug);
-
-            return view('site.pages.category', compact('category'));
-        }
+    public function show($slug)  ///To display the category from the nav menu
+    {
+        $category = $this->categoryRepository->findBySlug($slug);
+        //dd($category );
+        return view('site.pages.category', compact('category'));
+    }
 
 }
