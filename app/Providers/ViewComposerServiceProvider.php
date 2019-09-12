@@ -20,6 +20,8 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with('categories', Category::orderByRaw('-name ASC')->get()->nest());
         });
     }
+}
+
 //    /**
 //     * Register services.
 //     *
@@ -46,4 +48,3 @@ class ViewComposerServiceProvider extends ServiceProvider
 //            $view->with('categories', Category::orderBy('name', 'ASC')->get()); //whats nest??
 //        });
 //    }
-}

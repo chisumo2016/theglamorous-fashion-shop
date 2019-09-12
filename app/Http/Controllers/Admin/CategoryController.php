@@ -46,7 +46,7 @@ class CategoryController extends BaseController
     public function create()
     {
         //$categories = $this->categoryRepository->listCategories('id', 'asc');
-        $categories = $this->categoryRepository->treeList();  //using a package
+         $categories = $this->categoryRepository->treeList();  //using a package
 
         $this->setPageTitle('Categories', 'Create Category');
         return view('admin.categories.create', compact('categories'));
