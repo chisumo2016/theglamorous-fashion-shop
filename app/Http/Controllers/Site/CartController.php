@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use Darryldecode\Cart\Cart;
+use Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //use Cart;
@@ -22,5 +22,12 @@ class CartController extends Controller
             return redirect('/');
         }
         return redirect()->back()->with('message', 'Item removed from cart successfully.');
+    }
+
+    public function clearCart()
+    {
+        Cart::clear();
+
+        return redirect('/');
     }
 }

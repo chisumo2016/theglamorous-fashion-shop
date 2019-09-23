@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 
-use Darryldecode\Cart\Cart;
+use Cart;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
