@@ -6,6 +6,8 @@ use App\Contracts\AttributeContract;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\ProductContract;
+
 
 class AttributeController extends  BaseController
 {
@@ -13,7 +15,9 @@ class AttributeController extends  BaseController
 
     public function __construct(AttributeContract $attributeRepository)
     {
+
         $this->attributeRepository = $attributeRepository;
+
     }
     public function index()
     {
@@ -72,6 +76,8 @@ class AttributeController extends  BaseController
         }
         return $this->responseRedirectBack('Attribute updated successfully' ,'success',false, false);
     }
+
+
 
     public function delete($id)
     {

@@ -8,13 +8,15 @@ use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+
+
 
 class ProductController extends BaseController
 {
     protected $brandRepository;
     protected $categoryRepository;
     protected $productRepository;
+
 
     public function __construct(BrandContract $brandRepository, CategoryContract $categoryRepository, ProductContract $productRepository)
     {
@@ -62,6 +64,8 @@ class ProductController extends BaseController
         return view('admin.products.edit', compact('categories', 'brands', 'product'));
     }
 
+
+
     public function update(StoreProductFormRequest $request)
     {
         $params = $request->except('_token');
@@ -73,6 +77,8 @@ class ProductController extends BaseController
         }
         return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
     }
+
+
 
 }
 
