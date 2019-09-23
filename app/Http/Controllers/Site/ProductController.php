@@ -27,4 +27,9 @@ class ProductController extends Controller
 
          //dd($product);
     }
+
+    public function addToCart(Request $request)
+    {
+        dd($request->all());
+    }
 }
